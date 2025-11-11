@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #1f1f1f, #121212);
+      color: #f1f1f1;
+      height: 100vh;
+    }
+
+    /* Chat Container */
+    #message-container {
+      width: 80%;
+      max-width: 900px;
+      margin-top: 20px;
+      margin-bottom: 90px; /* leave space for input bar */
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      overflow-y: auto;
+    }
+
+    /* Message Styles */
+    #message-container div {
+      max-width: 70%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+      animation: fadeIn 0.3s ease;
+    }
+
+    /* Incoming */
+    #message-container .incoming {
+      background: rgba(255, 255, 255, 0.1);
+      align-self: flex-start;
+    }
+
+    /* Outgoing */
+    #message-container .outgoing {
+      background: #ffdd57;
+      color: #222;
+      align-self: flex-end;
+    }
+
+    /* Chat Input Bar */
+    #send-container {
+      position: fixed;
+      bottom: 0;
+      background: rgba(25, 25, 25, 0.9);
+      backdrop-filter: blur(8px);
+      width: 80%;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      gap: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #message-input {
+      flex-grow: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      outline: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: #f1f1f1;
+    }
+
+    #send-button {
+      background: #ffdd57;
+      color: #222;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    #send-button:hover {
+      transform: scale(1.05);
+      background: #ffd633;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Scrollbar Styling (modern touch) */
+    #message-container::-webkit-scrollbar {
+      width: 6px;
+    }
+    #message-container::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+   <div id="message-container">
+    <!-- <div class="incoming"></div>
+    <div class="outgoing"></div> -->
+  </div>
+
+  <form id="send-container">
+    <input type="text" id="message-input" placeholder="Type a message..." autocomplete="off">
+    <button type="submit" id="send-button">Send</button>
+  </form>
+  
+</body>
+</html>
