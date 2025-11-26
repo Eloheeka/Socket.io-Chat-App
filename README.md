@@ -1,3 +1,3 @@
-A collection of embedded systems projects and experiments.  
-Includes microcontroller programming and hardware interfacing.  
-Perfect for learners exploring electronics and IoT concepts.
+A real-time chat application using Socket.io.  
+Supports multiple users, rooms, and instant messaging.  
+Designed for learning real-time communication in web apps.
